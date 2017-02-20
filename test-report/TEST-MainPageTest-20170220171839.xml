@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" name="MainPageTest-20170220171839" skipped="0" tests="2" time="18.138">
+	<testcase classname="MainPageTest" name="test_check_page_is_load" time="8.871"/>
+	<testcase classname="MainPageTest" name="test_search_field_presention" time="9.268"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="2" failures="0" name="MainPageTest-20170220171916" skipped="0" tests="2" time="15.471">
+	<testcase classname="MainPageTest" name="test_check_page_is_load" time="7.198">
+		<error message="name 'test_cases' is not defined" type="NameError">
+<![CDATA[Traceback (most recent call last):
+  File "C:\Users\ho-bondarenko\Documents\python\selenium\intime\testPages.py", line 16, in test_check_page_is_load
+    print('\n' + str(test_cases(0)))
+NameError: name 'test_cases' is not defined
+]]>		</error>
+	</testcase>
+	<testcase classname="MainPageTest" name="test_search_field_presention" time="8.272">
+		<error message="name 'test_cases' is not defined" type="NameError">
+<![CDATA[Traceback (most recent call last):
+  File "C:\Users\ho-bondarenko\Documents\python\selenium\intime\testPages.py", line 21, in test_search_field_presention
+    print('\n' + str(test_cases(1)))
+NameError: name 'test_cases' is not defined
+]]>		</error>
+	</testcase>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

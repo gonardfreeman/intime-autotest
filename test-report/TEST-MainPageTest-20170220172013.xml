@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" name="MainPageTest-20170220172013" skipped="0" tests="2" time="18.323">
+	<testcase classname="MainPageTest" name="test_check_page_is_load" time="6.519"/>
+	<testcase classname="MainPageTest" name="test_search_field_presention" time="11.804"/>
+	<system-out>
+<![CDATA[
+['Blocker', 'logo must be loaded']
+
+['Blocker', 'There must be search field']
+]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>
