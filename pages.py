@@ -29,18 +29,22 @@ class CalcPage(Page):
             if i.text == a:
                 i.click()
 
-    def volumes(self):
-        self.find_element(*CalcPageLocators.WEIGHT).send_keys('2')
-        self.find_element(*CalcPageLocators.HEIGHT).send_keys('42')
-        self.find_element(*CalcPageLocators.WIDTH).send_keys('42')
-        self.find_element(*CalcPageLocators.LENGTH).send_keys('42')
-        self.find_element(*CalcPageLocators.COST).clear()
+    def volumes(self, lst=[], *args):
+        self.find_element(*CalcPageLocators.WEIGHT).clear()
+        self.find_element(*CalcPageLocators.WEIGHT).send_keys(lst[0])
+        self.find_element(*CalcPageLocators.HEIGHT).clear()
+        self.find_element(*CalcPageLocators.HEIGHT).send_keys(lst[1])
+        self.find_element(*CalcPageLocators.WIDTH).clear()
+        self.find_element(*CalcPageLocators.WIDTH).send_keys(lst[2])
+        self.find_element(*CalcPageLocators.LENGTH).clear()
+        self.find_element(*CalcPageLocators.LENGTH).send_keys(lst[3])
+        # self.find_element(*CalcPageLocators.COST).clear()
         # self.find_element(*CalcPageLocators.COST).send_keys('250')
         self.find_element(*CalcPageLocators.BODY).click()
 
     def result(self):
         res = self.find_element(*CalcPageLocators.RESULT)
-        print(res.text)
+        return res.text
 
 
 
@@ -51,6 +55,6 @@ if __name__ == '__main__':
     x.open('ru-calc')
     x.choose_city_from()
     x.choose_city_to()
-    x.volumes()
+    x.volumes(['2','62','62','62'])
     time.sleep(10)
     x.result()
