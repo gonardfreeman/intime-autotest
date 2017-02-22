@@ -4,9 +4,9 @@ from pages import MainPage, CalcPage
 from testData import *
 import xmlrunner
 import unittest
-# import cities
+import cities
 import time
-
+from mk_cities import mk_cities
 
 #
 # class MainPageTest(unittest.TestCase):
@@ -29,17 +29,19 @@ import time
 #     def tearDown(self):
 #         self.driver.close()
 
-class CalcPageKievKharkovTest(unittest.TestCase):
+
+class CalcPageTest(unittest.TestCase):
     def setUp(self):
         options = webdriver.ChromeOptions()
         options.add_argument("--start-maximized")
         self.driver = webdriver.Chrome(chrome_options=options)
         self.driver.get('https://intime.ua/ru-calc')
 
+    @unittest.skip('dont need now')
     def test_multi_calc_less30_positive(self):
         page = CalcPage(self.driver)
-        page.choose_city_from()
-        page.choose_city_to()
+        page.choose_city_from(cities.Cities.KHARKOV)
+        page.choose_city_to(cities.Cities.KIEV)
         print('BVW<30_10 = boundary values less 30 kg and test with 10 kg <-- just for notes')
         print('POSITIVE TESTING! must be equal')
         for item in dataWL30positive.keys():
@@ -49,11 +51,12 @@ class CalcPageKievKharkovTest(unittest.TestCase):
                 print('test---', item, ', values---', dataWL30positive[item], ', expected ---', data[item],
                       ', result is ---', page.result())
                 self.assertEqual(page.result(), data[item])
-    #@unittest.skip('dont need now')
+
+    @unittest.skip('dont need now')
     def test_multi_calc_less30_negative(self):
         page = CalcPage(self.driver)
-        page.choose_city_from()
-        page.choose_city_to()
+        page.choose_city_from(cities.Cities.KHARKOV)
+        page.choose_city_to(cities.Cities.KIEV)
         print('BVW<30_10 = boundary values less 30 kg and test with 10 kg <-- just for notes')
         print('NEGATIVE TESTING! must be not EQUAL')
         for item in dataWL30negative.keys():
@@ -63,10 +66,11 @@ class CalcPageKievKharkovTest(unittest.TestCase):
                 print('test---',item, ', values---',dataWL30negative[item], ' expected ---', data[item], ' result is ---', page.result())
                 self.assertNotEqual(page.result(), data[item])
 
+    @unittest.skip('dont need now')
     def test_multi_calc_w_more30_vw_less30_positive(self):
         page = CalcPage(self.driver)
-        page.choose_city_from()
-        page.choose_city_to()
+        page.choose_city_from(cities.Cities.KHARKOV)
+        page.choose_city_to(cities.Cities.KIEV)
         print('###BVW<30_10 = boundary values less 30 kg and test with 10 kg <-- just for notes')
         print('Testing of weight more 30 kg volume weight less 30 kg')
         print('POSITIVE TESTING! must be EQUAL')
@@ -78,10 +82,11 @@ class CalcPageKievKharkovTest(unittest.TestCase):
                       ' result is ---', page.result())
                 self.assertEqual(page.result(), data[item])
 
+    @unittest.skip('dont need now')
     def test_multi_calc_w_more30_vw_less30_negative(self):
         page = CalcPage(self.driver)
-        page.choose_city_from()
-        page.choose_city_to()
+        page.choose_city_from(cities.Cities.KHARKOV)
+        page.choose_city_to(cities.Cities.KIEV)
         print('BVW<30_10 = boundary values less 30 kg and test with 10 kg <-- just for notes')
         print('Testing of weight more 30 kg volume weight less 30 kg')
         print('NEGATIVE TESTING! must be NOT EQUAL')
@@ -93,10 +98,11 @@ class CalcPageKievKharkovTest(unittest.TestCase):
                       ' result is ---', page.result())
                 self.assertNotEqual(page.result(), data[item])
 
+    @unittest.skip('dont need now')
     def test_multi_calc_w_less30_vw_more30_positive(self):
         page = CalcPage(self.driver)
-        page.choose_city_from()
-        page.choose_city_to()
+        page.choose_city_from(cities.Cities.KHARKOV)
+        page.choose_city_to(cities.Cities.KIEV)
         print('###BVW<30_10 = boundary values less 30 kg and test with 10 kg <-- just for notes')
         print('Testing of weight less 30 kg Volume weight more 30 kg')
         print('POSITIVE TESTING! must be EQUAL')
@@ -108,10 +114,11 @@ class CalcPageKievKharkovTest(unittest.TestCase):
                       ' result is ---', page.result())
                 self.assertEqual(page.result(), data[item])
 
+    @unittest.skip('dont need now')
     def test_multi_calc_w_less30_vw_more30_negative(self):
         page = CalcPage(self.driver)
-        page.choose_city_from()
-        page.choose_city_to()
+        page.choose_city_from(cities.Cities.KHARKOV)
+        page.choose_city_to(cities.Cities.KIEV)
         print('BVW<30_10 = boundary values less 30 kg and test with 10 kg <-- just for notes')
         print('Testing of weight less 30 kg Volume weight more 30 kg')
         print('NEGATIVE TESTING! must be NOT EQUAL')
@@ -123,10 +130,11 @@ class CalcPageKievKharkovTest(unittest.TestCase):
                       ' result is ---', page.result())
                 self.assertNotEqual(page.result(), data[item])
 
+    @unittest.skip('dont need now')
     def test_multi_calc_w_more30_vw_more30_positive(self):
         page = CalcPage(self.driver)
-        page.choose_city_from()
-        page.choose_city_to()
+        page.choose_city_from(cities.Cities.KHARKOV)
+        page.choose_city_to(cities.Cities.KIEV)
         print('###BVW<30_10 = boundary values less 30 kg and test with 10 kg <-- just for notes')
         print('Testing of weight more 30 kg Volume weight more 30 kg')
         print('POSITIVE TESTING! must be EQUAL')
@@ -138,10 +146,11 @@ class CalcPageKievKharkovTest(unittest.TestCase):
                       ' result is ---', page.result())
                 self.assertEqual(page.result(), data[item])
 
+    @unittest.skip('dont need now')
     def test_multi_calc_w_more30_vw_more30_negative(self):
         page = CalcPage(self.driver)
-        page.choose_city_from()
-        page.choose_city_to()
+        page.choose_city_from(cities.Cities.KHARKOV)
+        page.choose_city_to(cities.Cities.KIEV)
         print('BVW<30_10 = boundary values less 30 kg and test with 10 kg <-- just for notes')
         print('Testing of weight more 30 kg Volume weight more 30 kg')
         print('NEGATIVE TESTING! must be NOT EQUAL')
@@ -152,6 +161,19 @@ class CalcPageKievKharkovTest(unittest.TestCase):
                 print('test---', item, ', values---', dataWM30VWM30negative[item], ' expected ---', data[item],
                       ' result is ---', page.result())
                 self.assertNotEqual(page.result(), data[item])
+
+    def test_different_cities(self):
+        page = CalcPage(self.driver)
+        page.weight('31')
+        page.clear_city_from()
+        page.choose_city_from('Киев')
+        print('Обьявленная стоимость 500(-1,5). Из Киев ')
+        for cityTo in mk_cities():
+            with self.subTest(cityTo=cityTo):
+                page.clear_city_To()
+                page.choose_city_to(cityTo)
+                time.sleep(10)
+                print('в город '+cityTo+' --- '+page.result())
 
 
     def tearDown(self):

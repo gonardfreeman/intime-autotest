@@ -1,1 +1,3 @@
-{}
+{
+  "testPages.py::CalcPageTest::test_different_cities": true
+}

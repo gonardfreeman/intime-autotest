@@ -9,6 +9,9 @@ class Page():
     def find_element(self, *locator):
         return self.driver.find_element(*locator)
 
+    def execute(self, script):
+        return self.driver.execute_script(script)
+
     def find_elements(self, *locator):
         return self.driver.find_elements(*locator)
 

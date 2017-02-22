@@ -13,33 +13,67 @@ class MainPage(Page):
 
 
 class CalcPage(Page):
-    def choose_city_from(self):
-        self.find_element(*CalcPageLocators.FROM_CITY).send_keys('кие')
-        time.sleep(2)
-        for i in self.find_elements(*CalcPageLocators.FROM_CITY_LI):
-            a = cities.Cities.KIEV
-            if i.text == a:
-                i.click()
+    def clear_city_from(self):
+        self.find_element(*CalcPageLocators.FROM_CITY).clear()
 
-    def choose_city_to(self):
-        self.find_element(*CalcPageLocators.TO_CITY).send_keys('харьк')
+    def clear_city_To(self):
+        self.find_element(*CalcPageLocators.TO_CITY).clear()
+
+
+    def choose_city_from(self, city):
+        self.find_element(*CalcPageLocators.FROM_CITY).send_keys(city)
         time.sleep(2)
-        for i in self.find_elements(*CalcPageLocators.TO_CITY_LI):
-            a = cities.Cities.KHARKOV
-            if i.text == a:
-                i.click()
+        for i in self.find_elements(*CalcPageLocators.CITY_LI):
+            text = i.text
+            for j in i.find_elements(*CalcPageLocators.FIRST_CHILD):
+                text = text.replace(j.text, '').rstrip('\n')
+                a = city
+                if a == text:
+                    i.click()
+
+    def choose_city_to(self, city):
+        self.find_element(*CalcPageLocators.TO_CITY).send_keys(city)
+        time.sleep(2)
+        for i in self.find_elements(*CalcPageLocators.CITY_LI):
+            text = i.text
+            for j in i.find_elements(*CalcPageLocators.FIRST_CHILD):
+                text = text.replace(j.text, '').rstrip('\n')
+                a = city
+                if a == text:
+                    i.click()
+                    if i.get_attribute('data-has_store') == '1':
+                        self.execute('document.getElementsByName("type_to")[0].checked = true;')
+                        # self.find_element(*CalcPageLocators.INPUT_OFFICE).click()
+
+    def weight(self, weight):
+        self.find_element(*CalcPageLocators.WEIGHT).clear()
+        self.find_element(*CalcPageLocators.WEIGHT).send_keys(weight)
+
+    def height(self, height):
+        self.find_element(*CalcPageLocators.HEIGHT).clear()
+        self.find_element(*CalcPageLocators.HEIGHT).send_keys(height)
+
+    def width(self, width):
+        self.find_element(*CalcPageLocators.WIDTH).clear()
+        self.find_element(*CalcPageLocators.WIDTH).send_keys(width)
+
+    def lenght(self, lenght):
+        self.find_element(*CalcPageLocators.LENGTH).clear()
+        self.find_element(*CalcPageLocators.LENGTH).send_keys(lenght)
+
+    def cost(self, cost):
+        self.find_element(*CalcPageLocators.COST).clear()
+        self.find_element(*CalcPageLocators.COST).send_keys('250')
+
+    def get_has_store(self):
+        self.find_element(*CalcPageLocators.HAS_STORE)
 
     def volumes(self, lst=[], *args):
-        self.find_element(*CalcPageLocators.WEIGHT).clear()
-        self.find_element(*CalcPageLocators.WEIGHT).send_keys(lst[0])
-        self.find_element(*CalcPageLocators.HEIGHT).clear()
-        self.find_element(*CalcPageLocators.HEIGHT).send_keys(lst[1])
-        self.find_element(*CalcPageLocators.WIDTH).clear()
-        self.find_element(*CalcPageLocators.WIDTH).send_keys(lst[2])
-        self.find_element(*CalcPageLocators.LENGTH).clear()
-        self.find_element(*CalcPageLocators.LENGTH).send_keys(lst[3])
-        # self.find_element(*CalcPageLocators.COST).clear()
-        # self.find_element(*CalcPageLocators.COST).send_keys('250')
+        self.weight(lst[0])
+        self.height(lst[1])
+        self.width(lst[2])
+        self.lenght(lst[3])
+        # self.cost('250')
         self.find_element(*CalcPageLocators.BODY).click()
 
     def result(self):
@@ -53,8 +87,6 @@ if __name__ == '__main__':
     options.add_argument("--start-maximized")
     x = CalcPage(webdriver.Chrome(chrome_options=options))
     x.open('ru-calc')
-    x.choose_city_from()
-    x.choose_city_to()
-    x.volumes(['2','62','62','62'])
-    time.sleep(10)
-    x.result()
+    x.choose_city_to('Киев')
+    # x.choose_city_from(cities.Cities.KHARKOV)
+
