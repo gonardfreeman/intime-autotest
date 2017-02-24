@@ -1,6 +1,6 @@
 def mk_cities():
     arr = []
-    with open('cities.txt', 'r') as f:
+    with open('new_cities.txt', 'r') as f:
         for i in f:
             arr.append(i.rstrip('\n'))
     return arr

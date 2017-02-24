@@ -22,7 +22,7 @@ class CalcPage(Page):
 
     def choose_city_from(self, city):
         self.find_element(*CalcPageLocators.FROM_CITY).send_keys(city)
-        time.sleep(2)
+        time.sleep(1)
         for i in self.find_elements(*CalcPageLocators.CITY_LI):
             text = i.text
             for j in i.find_elements(*CalcPageLocators.FIRST_CHILD):
@@ -33,7 +33,7 @@ class CalcPage(Page):
 
     def choose_city_to(self, city):
         self.find_element(*CalcPageLocators.TO_CITY).send_keys(city)
-        time.sleep(2)
+        time.sleep(1)
         for i in self.find_elements(*CalcPageLocators.CITY_LI):
             text = i.text
             for j in i.find_elements(*CalcPageLocators.FIRST_CHILD):
@@ -43,7 +43,6 @@ class CalcPage(Page):
                     i.click()
                     if i.get_attribute('data-has_store') == '1':
                         self.execute('document.getElementsByName("type_to")[0].checked = true;')
-                        # self.find_element(*CalcPageLocators.INPUT_OFFICE).click()
 
     def weight(self, weight):
         self.find_element(*CalcPageLocators.WEIGHT).clear()
@@ -79,6 +78,12 @@ class CalcPage(Page):
     def result(self):
         res = self.find_element(*CalcPageLocators.RESULT)
         return res.text
+        # try:
+        #     res = self.wait_driver(self.presence_located(*CalcPageLocators.RESULT))
+        #     return res.text
+        # # res = self.find_element(*CalcPageLocators.RESULT)
+        # finally:
+        #     self.driver.quit()
 
 
 
@@ -88,5 +93,7 @@ if __name__ == '__main__':
     x = CalcPage(webdriver.Chrome(chrome_options=options))
     x.open('ru-calc')
     x.choose_city_to('Киев')
+    x.weight('12')
+    print(x.result())
     # x.choose_city_from(cities.Cities.KHARKOV)
 

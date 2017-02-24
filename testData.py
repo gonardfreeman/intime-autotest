@@ -11,10 +11,10 @@ data = {
     'BVW<30_30': '80',
     'BVVW<30_BVW>30_31_positive': '89.3',
     'BVVW<30_BVW<30_30_negative': '89.3',
-    'BVW<30_BVVW>30_31_positive': '155',
-    'BVW>30BVVW<30_29_negative': '155',
-    'BVW>30_BVVW>30_31_positive':'155',
-    'BVW<30_BVVW<30_29_negative':'155',
+    'BVW<30_BVVW>30_31_positive': '156',
+    'BVW>30BVVW<30_29_negative': '156',
+    'BVW>30_BVVW>30_31_positive':'156',
+    'BVW<30_BVVW<30_29_negative':'156',
 }
 #Volume Weight less 30 ['30','35','40','45','60','70','78','80']
 dataWL30positive = {

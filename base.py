@@ -1,4 +1,6 @@
 from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 class Page():
     def __init__(self, driver, base_url='https://intime.ua/'):
@@ -18,6 +20,12 @@ class Page():
     def open(self, page):
         url = self.base_url + page
         self.driver.get(url)
+
+    def presence_located(self, *locator):
+        return EC.presence_of_element_located(*locator)
+
+    def wait_driver(self, located):
+        return WebDriverWait(self.driver,10).until(located)
 
     def get_url(self):
         return self.driver.current_url

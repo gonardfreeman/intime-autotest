@@ -47,7 +47,7 @@ class CalcPageTest(unittest.TestCase):
         for item in dataWL30positive.keys():
             with self.subTest(item=item):
                 page.volumes(dataWL30positive[item])
-                time.sleep(20)
+                time.sleep(0.5)
                 print('test---', item, ', values---', dataWL30positive[item], ', expected ---', data[item],
                       ', result is ---', page.result())
                 self.assertEqual(page.result(), data[item])
@@ -62,7 +62,7 @@ class CalcPageTest(unittest.TestCase):
         for item in dataWL30negative.keys():
             with self.subTest(item=item):
                 page.volumes(dataWL30negative[item])
-                time.sleep(20)
+                time.sleep(0.5)
                 print('test---',item, ', values---',dataWL30negative[item], ' expected ---', data[item], ' result is ---', page.result())
                 self.assertNotEqual(page.result(), data[item])
 
@@ -77,7 +77,7 @@ class CalcPageTest(unittest.TestCase):
         for item in dataWM30VWL30positive.keys():
             with self.subTest(item=item):
                 page.volumes(dataWM30VWL30positive[item])
-                time.sleep(15)
+                time.sleep(0.5)
                 print('test---', item, ', values---', dataWM30VWL30positive[item], ' expected ---', data[item],
                       ' result is ---', page.result())
                 self.assertEqual(page.result(), data[item])
@@ -93,7 +93,7 @@ class CalcPageTest(unittest.TestCase):
         for item in dataWM30WL30negative.keys():
             with self.subTest(item=item):
                 page.volumes(dataWM30WL30negative[item])
-                time.sleep(15)
+                time.sleep(0.5)
                 print('test---', item, ', values---', dataWM30WL30negative[item], ' expected ---', data[item],
                       ' result is ---', page.result())
                 self.assertNotEqual(page.result(), data[item])
@@ -109,7 +109,7 @@ class CalcPageTest(unittest.TestCase):
         for item in dataWL30VWM30positive.keys():
             with self.subTest(item=item):
                 page.volumes(dataWL30VWM30positive[item])
-                time.sleep(15)
+                time.sleep(0.5)
                 print('test---', item, ', values---', dataWL30VWM30positive[item], ' expected ---', data[item],
                       ' result is ---', page.result())
                 self.assertEqual(page.result(), data[item])
@@ -125,7 +125,7 @@ class CalcPageTest(unittest.TestCase):
         for item in dataWL30VWM30negative.keys():
             with self.subTest(item=item):
                 page.volumes(dataWL30VWM30negative[item])
-                time.sleep(15)
+                time.sleep(0.5)
                 print('test---', item, ', values---', dataWL30VWM30negative[item], ' expected ---', data[item],
                       ' result is ---', page.result())
                 self.assertNotEqual(page.result(), data[item])
@@ -141,7 +141,7 @@ class CalcPageTest(unittest.TestCase):
         for item in dataWM30VWM30positive.keys():
             with self.subTest(item=item):
                 page.volumes(dataWM30VWM30positive[item])
-                time.sleep(15)
+                time.sleep(0.5)
                 print('test---', item, ', values---', dataWM30VWM30positive[item], ' expected ---', data[item],
                       ' result is ---', page.result())
                 self.assertEqual(page.result(), data[item])
@@ -157,22 +157,23 @@ class CalcPageTest(unittest.TestCase):
         for item in dataWM30VWM30negative.keys():
             with self.subTest(item=item):
                 page.volumes(dataWM30VWM30negative[item])
-                time.sleep(15)
+                time.sleep(0.5)
                 print('test---', item, ', values---', dataWM30VWM30negative[item], ' expected ---', data[item],
                       ' result is ---', page.result())
                 self.assertNotEqual(page.result(), data[item])
 
+    # @unittest.skip('dont need now')
     def test_different_cities(self):
         page = CalcPage(self.driver)
         page.weight('31')
         page.clear_city_from()
         page.choose_city_from('Киев')
-        print('Обьявленная стоимость 500(-1,5). Из Киев ')
+        print('Из Киев ')
         for cityTo in mk_cities():
             with self.subTest(cityTo=cityTo):
                 page.clear_city_To()
                 page.choose_city_to(cityTo)
-                time.sleep(10)
+                time.sleep(0.5)
                 print('в город '+cityTo+' --- '+page.result())
 
 
